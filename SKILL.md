@@ -72,6 +72,7 @@ Recommend one primary logo type with explicit reasoning grounded in the strategy
 - Three to five descriptive adjectives the visual should embody, drawn from Phase 1 voice (not invented fresh).
 - Two or three reference logos with explicit rationale: what is relevant about each, and what NOT to copy from each.
 - Conceptual hooks the symbol or wordmark could evoke without being literal.
+- **Voice-to-visual translation**: For each voice pair from Phase 1, name the specific visual property it demands and what the antonym prohibits. This is the step that connects strategy to design decisions — without it, adjectives remain aspirational rather than directive. Examples: "considered not precious" → deliberate geometric construction, not decorative detail or ornamental flourishes; "bold not aggressive" → high-weight type with generous counter space, not compressed condensed letterforms; "warm not corporate" → humanist sans proportions, not strict geometric sans; "premium not exclusive" → restrained palette with material weight, not cold minimalism or velvet-rope signaling. Write one line per pair. If a voice pair does not translate cleanly to a visual property, return to Phase 1 and sharpen the antonym.
 
 ### Color direction
 
@@ -79,6 +80,8 @@ Recommend one primary logo type with explicit reasoning grounded in the strategy
 - Specify roles: primary, secondary, accent, neutrals.
 
 Be cautious about color psychology claims. Cross-cultural universal color meanings are weakly supported in the empirical literature (see Elliot & Maier's 2014 review in *Annual Review of Psychology*). Context-specific effects exist, but appeals to "blue means trust" or "red means energy" do not survive scrutiny. Justify color choices by category dynamics, brand differentiation, and consistency with voice rather than by claimed universal meanings.
+
+If the brand is digital-first, specify whether dark mode uses a true reversal of the light palette or a distinct dark palette with separately specified token values. A reversed palette often reads colder than intended and can lose contrast in ways a purpose-built dark palette would not — particularly for mid-range hues that sit near the reversal midpoint. Flag this as a decision the brand must make, even if execution is deferred.
 
 ### Typography direction
 
@@ -89,6 +92,14 @@ Be cautious about color psychology claims. Cross-cultural universal color meanin
 ### Anti-direction
 
 What this logo should NOT look like. This section is often more useful than the positive direction because it constrains the search space. Examples: "no gradient orbs", "no thin generic geometric sans serif (Avenir, Montserrat, Poppins)", "not another rocket ship for a tech brand", "no overused wellness palette of sage green and dusty pink".
+
+### Logo misuse
+
+Specify five to eight misuse cases the brand must document and prohibit. Common cases: stretching or compressing the mark disproportionately; rotating it; placing it on a busy or low-contrast background; substituting unauthorized colors; outlining the mark when a solid version is specified; using the wordmark and symbol independently when only the combination mark is approved; applying drop shadows, glows, or gradients; scaling below the minimum size.
+
+State each misuse in one line, as a prohibition: "Do not rotate the mark." "Do not place the mark on a patterned background." "Do not use the wordmark without the symbol in contexts where the symbol-only lockup has not been approved."
+
+This section produces a brief misuse reference that extracts directly into a brand guidelines document later. Generate it alongside the positive direction — do not defer it to Phase 4.
 
 ### Application tests
 
@@ -114,6 +125,7 @@ Use SVG when the mark is composable from typography and geometric primitives (re
 - Build the mark with `<g>` groups so wordmark, symbol, and clear-space elements can be toggled independently.
 - For typography, embed font choices via `<text font-family="...">` or convert to paths if the user wants self-contained SVG. Note this trade-off explicitly: text-based SVG depends on the font being available; path-based SVG is portable but loses editability. Make a clear recommendation rather than leaving the choice open.
 - For symbols, prefer simple shapes built from explicit `<path>` coordinates, `<circle>`, `<rect>`, `<polygon>`. Avoid complex bezier curves; Claude is unreliable at producing aesthetically refined bezier work and the result often reads as "AI-generated" rather than designed.
+- Build primary coordinates on a modular subgrid. A 10-unit grid within a 100-unit viewBox gives 10 snap points per axis; an 8-unit grid gives 12.5. Snap all primary path coordinates, circle centres, and rect origins to grid intersections. Proportions derived from a grid hold up under scaling and refinement in ways that free-form decimal coordinates do not. State the grid in a comment at the top of the SVG: `<!-- grid: 10-unit on 100×100 viewBox -->`.
 
 #### Distinctive detail requirement
 
@@ -155,7 +167,27 @@ After generating the SVGs, always produce a self-contained HTML specimen sheet. 
 - Include the brand name and positioning sentence at the top as context
 - Use a clean neutral layout (white body, dark section for reversed variants, generous padding, clear section labels in a small neutral sans)
 
-Instruct the user to open it in a browser. In Claude.ai the HTML will render inline in the conversation — point this out and tell them to use the expand button if it appears small.
+Instruct the user to open it in a browser. In Claude desktop (Cowork tab), the HTML will render inline in the conversation — point this out and tell them to use the expand button if it appears small.
+
+#### Size and clear space specification
+
+After generating the SVGs, produce a short specification block alongside the specimen sheet:
+
+- **Minimum size**: The smallest size at which the primary lockup remains legible. Standard starting points: 50px wide for digital; 25mm (1 inch) for print. Adjust down if the mark is unusually simple; adjust up if it has fine detail or tight letterforms. State separate minimums for the primary lockup and the symbol-only form.
+- **Clear space**: The minimum empty area surrounding the mark on all sides. Express in units tied to the mark's own dimensions so the rule remains scale-independent. Common anchors: "the cap-height of the wordmark on all sides"; "the diameter of the symbol on all sides"; "one unit on the base grid on all sides." Avoid stating clear space in pixels or millimetres alone — those values lose meaning as soon as the brand scales.
+
+Include this spec block in the HTML specimen sheet as a footer section beneath the scale row, so the user sees size requirements in context.
+
+#### File format export guidance
+
+After the SVGs are approved, tell the user which formats they need and how to get them:
+
+- **SVG**: Primary deliverable for web, apps, and any context where the mark is used at variable sizes. Editable, scalable, no quality loss. If the SVG uses `<text>` elements rather than paths, the font must be available in the target environment or the text must be converted to paths before handing to a vendor.
+- **PNG (transparent background)**: Social media, slide decks, email headers, any context where SVG is not supported. Export at 2× or 3× the intended display size (e.g., 1500px wide if the mark displays at 500px max) to stay crisp on high-density screens.
+- **PDF or EPS**: Print vendors, merchandise, signage, embroidery. These require the mark as vectors with fonts embedded or converted to outlines. If the user has Inkscape (free) or Illustrator, save SVG → export PDF. If not, vectorizer.ai or a designer handoff is the bridge.
+- **Favicon (.ico or 32×32 PNG)**: Browsers. The full wordmark rarely works at 16–32px; the symbol-only or favicon-derivative from Phase 3 is the source. Most modern browsers accept a 32×32 PNG `<link rel="icon">` without needing `.ico` format.
+
+State which formats the brand's specific use cases require, drawn from Phase 1 touchpoints. Do not list every format by default — the user needs a prioritised short list, not an exhaustive one.
 
 ### Variation exploration
 
@@ -200,7 +232,7 @@ Run exploration mode when direction is open. Once the user selects a direction, 
 
 The exploration document inherits the brand it is exploring -- its palette, typography, and voice -- not the skill's defaults. Lean on the Phase 2 brief for every visual decision in the cards.
 
-For lever vocabulary by logo type, card structure detail, example variation paragraph, and the HTML gallery scaffold, see `references/variation-exploration.md`. Gallery production is handed off to the frontend-design skill rather than duplicated here.
+For lever vocabulary by logo type, card structure detail, example variation paragraph, and the HTML gallery scaffold, see `references/variation-exploration.md`. The scaffold is self-contained; if the `claude-frontend-skills` skill is available, hand off to it for production refinement.
 
 ### Image-gen prompts
 
@@ -212,6 +244,8 @@ Always produce:
 - Suggested negative prompts (things to exclude).
 - Recommended parameters for the chosen tool (aspect ratio, stylization level, model version).
 - A short note on how to evaluate the outputs against the brief, including which Phase 1 voice antonyms to actively check for.
+
+If the Claude environment has image-generation MCPs available (Replicate-Flux, Draw Things, or similar), the prompts above can be executed directly in the conversation rather than copied to an external tool. Run the core prompt first, then each variation prompt in turn. Curation and Phase 4 critique apply to the outputs the same way regardless of how they were generated — MCP execution does not change the workflow, only the friction of running it.
 
 ## Phase 4: Critique and refinement
 
@@ -231,6 +265,7 @@ Critique either the SVG/prompt outputs from Phase 3 or an existing logo the user
 - Optical balance: does any element look heavier, lighter, or off-center than it should? Note that mathematical centering is rarely optical centering.
 - Negative space: incidental or intentional?
 - Complexity: van Grinsven & Das (2016) found that complex logos can build familiarity over time but harm initial recognition; simple logos are more immediately legible but build less distinctive memory. Match the complexity to the brand's lifecycle stage.
+- Color-blindness simulation: Does the palette differentiate under full grayscale (achromatopsia)? Would a user with deuteranopia (red-green color blindness, the most common form, affecting approximately 8% of men) distinguish the mark from a competitor using a similar hue? Logos are technically exempt from WCAG 1.4.3 contrast requirements, but designing toward sufficient contrast is still professional practice. Flag any palette that relies solely on hue — red vs. green, blue vs. purple — to carry identity, with no form or value differentiation as a backup.
 
 **Versatility**
 - Are horizontal, stacked, and symbol-only lockups already provided or trivially derivable?
