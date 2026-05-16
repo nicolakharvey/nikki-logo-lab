@@ -1,6 +1,6 @@
 # logo-development
 
-A Claude Code skill for developing brand logos through a strategy-first workflow. It covers four sequential phases: strategy extraction, design brief, execution (SVG code or image-gen prompts), and critique.
+A Claude Code skill for developing brand logos through a strategy-first workflow. It covers four sequential phases: strategy extraction, design brief, execution (SVG code, image-gen prompts, or variation exploration), and critique.
 
 The strategy phase is not optional. A logo without a strategy brief defaults to whatever visual conventions are popular this year. This skill is built to prevent that.
 
@@ -13,14 +13,15 @@ Pulls out positioning, audience, voice, and competitive context before any visua
 Produces a written brief covering logo type recommendation, visual direction, color direction, typography direction, what the logo should NOT look like, and the application contexts it needs to survive (favicon, single-color, reversed, etc.).
 
 **Phase 3: Execution**
-Two paths depending on the brief:
+Three paths depending on the brief and how open the visual direction is:
 - SVG generation for wordmarks, lettermarks, monograms, and simple geometric or abstract marks.
 - Structured image-gen prompts (Midjourney, Leonardo, Flux, Imagen, DALL-E) for pictorial marks, illustrative marks, mascots, and anything requiring texture or stylization.
+- Variation exploration when the brief is locked but the visual direction is still open. Holds a Core DNA constant, defines explicit design levers, and generates 8 to 12 variations each pulling a single lever. Each variation gets a status badge (Strong candidate / Worth testing / Documented for the file) applied during generation. Exploration precedes first-pass delivery; it does not replace it.
 
-A hybrid of both is common for combination marks.
+A hybrid of SVG and image-gen is common for combination marks.
 
 **Phase 4: Critique**
-Works through strategy fidelity, design fundamentals (legibility, single-color, reversed, optical balance), versatility (lockup forms, application contexts), and distinctiveness. Each issue gets a specific refinement recommendation, not just a problem description.
+Works through strategy fidelity, design fundamentals (legibility, single-color, reversed, optical balance), versatility (lockup forms, application contexts), and distinctiveness. Each issue gets a specific refinement recommendation, not just a problem description. When Phase 3 ran in variation exploration mode, Phase 4 critiques the selected variation forward — the exploration set was already graded inline.
 
 ## Honest limits
 
@@ -56,3 +57,5 @@ Once installed, mention logos or brand identity work and Claude will use this sk
 > "Use the logo-development skill to help me design a logo for [brand name]."
 
 You can enter at any phase. If you bring an existing logo and want a critique, Claude will back-fill the strategy assumptions it is critiquing against so you can correct them if they are wrong.
+
+If you are not sure which visual direction to take after the brief, say so. The skill will run variation exploration rather than committing to a first pass prematurely.
