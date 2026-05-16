@@ -1,5 +1,5 @@
 ---
-name: signal
+name: nikki-logo-lab
 description: 'Develop, refine, and critique brand logos through a strategy-first workflow: extract positioning, audience, and voice; produce a design brief; execute via SVG code, structured image-gen prompts (Midjourney, Leonardo, Flux), or variation exploration (single-lever direction-finding when the visual direction is still open); then critique against brand fidelity, design fundamentals, versatility, and distinctiveness. Use for any logo, wordmark, lettermark, monogram, symbol mark, combination mark, or visual identity work. Also use when they share an existing logo for feedback, describe a startup needing identity work, say "show me options", or say "I need a logo for X". Trigger in preference to generic image-generation help whenever the output is a logo rather than a one-off illustration.'
 ---
 
