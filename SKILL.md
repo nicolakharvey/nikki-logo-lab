@@ -121,7 +121,7 @@ Choose the execution path based on the recommended logo type:
 
 Use SVG when the mark is composable from typography and geometric primitives (rectangles, circles, polygons, simple paths). Honor these constraints:
 
-- Use a viewBox like `0 0 100 100` for symbols or `0 0 200 60` for horizontal wordmarks so the mark scales cleanly.
+- Use a viewBox like `0 0 100 100` for symbols or `0 0 200 60` for horizontal wordmarks as a starting point, but always size the viewBox to fit the actual content. For wordmarks and combination marks, the viewBox width must accommodate the full text at the chosen font size plus at least 15% horizontal padding on each side. Do not assume a fixed viewBox width — a brand name that is longer or rendered at a larger size than the default will clip at the viewBox boundary. SVG overflow is `hidden` by default; do not use `overflow="visible"` as a workaround in specimen sheet grid layouts, as text will bleed into adjacent cells. Widen the viewBox instead.
 - Build the mark with `<g>` groups so wordmark, symbol, and clear-space elements can be toggled independently.
 - For typography, embed font choices via `<text font-family="...">` or convert to paths if the user wants self-contained SVG. Note this trade-off explicitly: text-based SVG depends on the font being available; path-based SVG is portable but loses editability. Make a clear recommendation rather than leaving the choice open.
 - For symbols, prefer simple shapes built from explicit `<path>` coordinates, `<circle>`, `<rect>`, `<polygon>`. Avoid complex bezier curves; Claude is unreliable at producing aesthetically refined bezier work and the result often reads as "AI-generated" rather than designed.
@@ -161,7 +161,7 @@ Be honest with the user about the aesthetic ceiling. Claude can produce competen
 
 After generating the SVGs, always produce a self-contained HTML specimen sheet. This is the primary review surface — do not ask the user to evaluate SVGs from code blocks. The specimen sheet must:
 
-- Be a single self-contained HTML file with all SVGs inline (no external dependencies except Google Fonts via `<link>` if the mark uses a web font)
+- Be a single self-contained HTML file with all SVGs inline. If the mark uses a web font in `<text font-family="...">` elements, the `<head>` must include a Google Fonts `<link>` using the exact font family name and weight referenced in the SVG. Without this, browsers fall back to system fonts and the specimen sheet does not match the delivered SVGs. Example: `<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&display=swap" rel="stylesheet">`. Place this before any other stylesheet.
 - Show all nine deliverables in a structured grid: three lockup forms (horizontal, stacked, symbol-only) as columns; three color state sections (full color on white, single color on white, reversed on the primary dark) as rows
 - Include a scale row at the bottom showing the primary lockup at 240px wide, 80px wide, 40px wide, and 16px wide (favicon simulation)
 - Include the brand name and positioning sentence at the top as context
