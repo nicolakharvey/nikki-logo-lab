@@ -145,6 +145,51 @@ Produce a complete first-pass deliverable, which means BOTH color states AND loc
 
 Be honest with the user about the aesthetic ceiling. Claude can produce competent wordmarks with thoughtful kerning suggestions, simple monograms, and basic geometric symbols. Claude cannot produce the kind of optically-balanced, custom-lettered, distinctively-crafted marks a skilled type or logo designer produces. If the brief calls for that level, say so and recommend either handing off the SVG output as a starting point to a designer, or shifting to the image-gen path and curating from many candidates.
 
+### Variation exploration
+
+Trigger this path when direction is still open after Phase 2: the brief is locked but the user has not committed to a visual direction. Common signals include "show me options", "I'm not sure which way to go yet", or any moment where the strategy is settled but the visual feel is genuinely uncertain. This is direction-finding work, not delivery work. It precedes first-pass execution on the selected direction; it does not replace it.
+
+**Core DNA plus Lever framework**
+
+Before generating any variations, state two things explicitly:
+
+- **Core DNA** -- a single sentence naming what stays constant across every variation. The DNA is what makes 10 variations feel like a family rather than 10 unrelated sketches. For a wordmark this might be the typeface category and weight range; for a geometric mark it might be the primary form and radial structure. If you cannot write the DNA sentence, the brief is not finished: return to Phase 2.
+- **Levers** -- the dimensions that can move while the DNA holds. Each logo type has its own lever set; see `references/variation-exploration.md` for vocabulary by type. Choose the levers most relevant to the open questions the user has.
+
+**The one-lever rule**
+
+Each variation pulls exactly one lever. Two levers moving simultaneously and the diagnostic value collapses: the user cannot tell which change is responsible for the result. This is not a stylistic preference; it is the minimum condition for the exploration to be legible.
+
+**Exploration size**
+
+Default to 8 to 12 variations. Three is too few to see patterns; twenty is overwhelming. Within that range, group related levers together so the set has an internal logic the user can read at a glance.
+
+**Variation card structure**
+
+Each variation is presented as a card. The card structure (detailed in `references/variation-exploration.md`) covers: a variation number with status badge, a two-to-three word evocative name, the lever stated explicitly, the mark rendered at consistent dimensions across every card, a brand lockup at small scale, a two-to-three sentence description naming what the lever produces, what trade-off it introduces, and what brand quality it tests, and a footer listing the qualities under evaluation (clarity, distinctiveness, scalability, warmth, etc.).
+
+Names matter more than they look. They give the user a vocabulary to reference specific candidates in later conversation. Without names, the gallery collapses into "the third one" within a day.
+
+**Three-state status rubric**
+
+Apply the rubric during generation, not after the set is complete:
+
+- **Strong candidate** -- passes strategy fidelity, has the required distinctive detail, performs in the critical applications identified in Phase 2.
+- **Worth testing** -- has a quality that may be valuable but introduces an unresolved question. Name the question.
+- **Documented for the file, not progressing** -- pulls the lever cleanly but the result fails the brand.
+
+Honest exploration includes failed variations. A curated set that only shows winners loses the diagnostic value of seeing why some directions do not work. Label failed variations as such and keep them in the set.
+
+**Sequencing**
+
+Run exploration mode when direction is open. Once the user selects a direction, return to the standard SVG or image-gen first-pass path to build out the full deliverable on the selected variation. Exploration is direction-finding; first-pass is delivery. The two modes are sequential, not interchangeable.
+
+**Brand inheritance**
+
+The exploration document inherits the brand it is exploring -- its palette, typography, and voice -- not the skill's defaults. Lean on the Phase 2 brief for every visual decision in the cards.
+
+For lever vocabulary by logo type, card structure detail, example variation paragraph, and the HTML gallery scaffold, see `references/variation-exploration.md`. Gallery production is handed off to the frontend-design skill rather than duplicated here.
+
 ### Image-gen prompts
 
 For pictorial, illustrative, or visually rich marks, generate structured prompts for the user to run in their image-gen tool of choice. See `references/image-gen-prompts.md` for tool-specific patterns covering Midjourney, Leonardo, Flux, Imagen, and DALL-E.
@@ -157,6 +202,8 @@ Always produce:
 - A short note on how to evaluate the outputs against the brief, including which Phase 1 voice antonyms to actively check for.
 
 ## Phase 4: Critique and refinement
+
+When Phase 3 ran in Variation Exploration mode, Phase 4 critique applies to the selected variation taken forward, not the full exploration set. The set has already been graded inline using the three-state rubric during generation. Phase 4 then deepens the critique on the chosen direction: applying the full strategy fidelity, design fundamentals, versatility, and distinctiveness dimensions to the one candidate the user has committed to pursuing.
 
 Critique either the SVG/prompt outputs from Phase 3 or an existing logo the user has shared. Work through these dimensions in order; if a logo fails an earlier dimension it is rarely worth evaluating later ones.
 
@@ -217,3 +264,4 @@ When delivering the full workflow, organize the response as four clearly-labeled
 ## References
 
 - `references/image-gen-prompts.md`: Tool-specific prompt patterns for Midjourney, Leonardo, Flux, Imagen, DALL-E. Read when entering Phase 3 image-gen path.
+- `references/variation-exploration.md`: Lever vocabulary by logo type, card structure, example variation paragraph, HTML gallery scaffold, naming conventions. Read when entering Phase 3 variation exploration path.
