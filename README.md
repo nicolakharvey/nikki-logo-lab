@@ -1,6 +1,6 @@
 # Nikki Logo Lab
 
-A Claude Code skill by Nikki Harvey for developing brand marks through a strategy-first workflow. Four sequential phases: strategy extraction, design brief, execution (SVG code, image-gen prompts, or variation exploration), and critique.
+A Claude Code skill by Nicola Harvey for developing brand marks through a strategy-first workflow. Four sequential phases: strategy extraction, design brief, execution (SVG code, image-gen prompts, or variation exploration), and critique.
 
 The strategy phase is not optional. A mark without a strategy brief defaults to whatever visual conventions are popular this year. Nikki Logo Lab is built to prevent that.
 
@@ -85,4 +85,4 @@ After Phase 3 SVG output, always ask for the specimen sheet before moving to cri
 
 ---
 
-Part of the **Nikki** suite of AI tools by [Nikki Harvey](https://linkedin.com/in/nicolakharvey).
+Part of the **Nikki** suite of AI tools by [Nicola Harvey](https://linkedin.com/in/nicolakharvey).
