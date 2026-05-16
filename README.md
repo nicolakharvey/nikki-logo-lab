@@ -50,6 +50,26 @@ Claude Code picks up skills from `~/.claude/skills/` automatically. No restart n
 3. In Claude.ai, go to Settings > Capabilities > Skills.
 4. Upload the zip file.
 
+## Best experience: use Claude.ai, not Claude Code
+
+This skill works significantly better in **Claude.ai** (desktop or web) than in Claude Code. The reason is simple: Claude.ai renders SVG inline in the conversation, so you see the actual mark as you iterate. Claude Code outputs SVG as a code block — you have to copy it into a browser to see it.
+
+Install via the Claude.ai method above, then open a new conversation and start from there.
+
+## Viewing your options — the specimen sheet
+
+After Phase 3 generates your SVG marks, ask Claude to produce an HTML specimen sheet:
+
+> "Generate an HTML specimen sheet for all the logo variants."
+
+The specimen sheet is a self-contained HTML file that renders all nine deliverables in one view:
+
+- Three lockup forms (horizontal, stacked, symbol-only) across the top
+- Three color state sections: full color on white, single color on white, reversed on dark
+- A scale row showing the primary lockup at large, medium, small, and favicon (16px) sizes
+
+Open it in any browser. This is the best way to evaluate the full system before moving to critique — you can see at a glance which variants hold up and which need work.
+
 ## Using the skill
 
 Once installed, mention logos or brand identity work and Claude will use this skill automatically. You can also invoke it directly:
@@ -59,3 +79,5 @@ Once installed, mention logos or brand identity work and Claude will use this sk
 You can enter at any phase. If you bring an existing logo and want a critique, Claude will back-fill the strategy assumptions it is critiquing against so you can correct them if they are wrong.
 
 If you are not sure which visual direction to take after the brief, say so. The skill will run variation exploration rather than committing to a first pass prematurely.
+
+After Phase 3 SVG output, always ask for the specimen sheet before moving to critique.

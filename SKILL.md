@@ -145,6 +145,18 @@ Produce a complete first-pass deliverable, which means BOTH color states AND loc
 
 Be honest with the user about the aesthetic ceiling. Claude can produce competent wordmarks with thoughtful kerning suggestions, simple monograms, and basic geometric symbols. Claude cannot produce the kind of optically-balanced, custom-lettered, distinctively-crafted marks a skilled type or logo designer produces. If the brief calls for that level, say so and recommend either handing off the SVG output as a starting point to a designer, or shifting to the image-gen path and curating from many candidates.
 
+#### HTML specimen sheet
+
+After generating the SVGs, always produce a self-contained HTML specimen sheet. This is the primary review surface — do not ask the user to evaluate SVGs from code blocks. The specimen sheet must:
+
+- Be a single self-contained HTML file with all SVGs inline (no external dependencies except Google Fonts via `<link>` if the mark uses a web font)
+- Show all nine deliverables in a structured grid: three lockup forms (horizontal, stacked, symbol-only) as columns; three color state sections (full color on white, single color on white, reversed on the primary dark) as rows
+- Include a scale row at the bottom showing the primary lockup at 240px wide, 80px wide, 40px wide, and 16px wide (favicon simulation)
+- Include the brand name and positioning sentence at the top as context
+- Use a clean neutral layout (white body, dark section for reversed variants, generous padding, clear section labels in a small neutral sans)
+
+Instruct the user to open it in a browser. In Claude.ai the HTML will render inline in the conversation — point this out and tell them to use the expand button if it appears small.
+
 ### Variation exploration
 
 Trigger this path when direction is still open after Phase 2: the brief is locked but the user has not committed to a visual direction. Common signals include "show me options", "I'm not sure which way to go yet", or any moment where the strategy is settled but the visual feel is genuinely uncertain. This is direction-finding work, not delivery work. It precedes first-pass execution on the selected direction; it does not replace it.
