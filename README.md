@@ -1,0 +1,58 @@
+# logo-development
+
+A Claude Code skill for developing brand logos through a strategy-first workflow. It covers four sequential phases: strategy extraction, design brief, execution (SVG code or image-gen prompts), and critique.
+
+The strategy phase is not optional. A logo without a strategy brief defaults to whatever visual conventions are popular this year. This skill is built to prevent that.
+
+## What it does
+
+**Phase 1: Strategy extraction**
+Pulls out positioning, audience, voice, and competitive context before any visual work begins. If you push back on this phase, the skill runs a compressed three-question version rather than skipping it entirely.
+
+**Phase 2: Design brief**
+Produces a written brief covering logo type recommendation, visual direction, color direction, typography direction, what the logo should NOT look like, and the application contexts it needs to survive (favicon, single-color, reversed, etc.).
+
+**Phase 3: Execution**
+Two paths depending on the brief:
+- SVG generation for wordmarks, lettermarks, monograms, and simple geometric or abstract marks.
+- Structured image-gen prompts (Midjourney, Leonardo, Flux, Imagen, DALL-E) for pictorial marks, illustrative marks, mascots, and anything requiring texture or stylization.
+
+A hybrid of both is common for combination marks.
+
+**Phase 4: Critique**
+Works through strategy fidelity, design fundamentals (legibility, single-color, reversed, optical balance), versatility (lockup forms, application contexts), and distinctiveness. Each issue gets a specific refinement recommendation, not just a problem description.
+
+## Honest limits
+
+Some things this skill cannot deliver well. It will name these when they come up rather than producing low-quality output.
+
+- **Custom letterform design.** True bespoke type requires a type designer. The skill will recommend handoff or a humanist off-the-shelf alternative.
+- **Optical balance in complex pictorial marks.** Claude cannot produce the refined, hand-crafted balance a skilled logo designer achieves. The image-gen path is the bridge for pictorial work.
+- **Animated logo systems.** The skill can describe motion direction and easing intent, but cannot produce After Effects, Lottie, or Rive files.
+- **Cultural or regional appropriateness.** Visual conventions and semiotic associations vary in ways Claude will miss. Recommend a local cultural review before finalizing for any unfamiliar market.
+- **Trademark clearance.** The skill does not search registries. Run a search via your relevant national registry (IP Australia, USPTO, WIPO Madrid) before committing to a mark.
+
+## Installing for Claude Code
+
+Clone the repo directly into your skills directory:
+
+```bash
+git clone https://github.com/nicolakharvey/logo-development.git ~/.claude/skills/logo-development
+```
+
+Claude Code picks up skills from `~/.claude/skills/` automatically. No restart needed.
+
+## Installing for Claude.ai
+
+1. Download or clone this repo.
+2. Zip the `logo-development` folder.
+3. In Claude.ai, go to Settings > Capabilities > Skills.
+4. Upload the zip file.
+
+## Using the skill
+
+Once installed, mention logos or brand identity work and Claude will use this skill automatically. You can also invoke it directly:
+
+> "Use the logo-development skill to help me design a logo for [brand name]."
+
+You can enter at any phase. If you bring an existing logo and want a critique, Claude will back-fill the strategy assumptions it is critiquing against so you can correct them if they are wrong.
