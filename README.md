@@ -43,18 +43,18 @@ git clone https://github.com/nicolakharvey/logo-development.git ~/.claude/skills
 
 Claude Code picks up skills from `~/.claude/skills/` automatically. No restart needed.
 
-## Installing for Claude.ai
+## Installing for Claude desktop
 
 1. Download or clone this repo.
 2. Zip the `logo-development` folder.
-3. In Claude.ai, go to Settings > Capabilities > Skills.
+3. In Claude desktop, go to Settings > Capabilities > Skills.
 4. Upload the zip file.
 
-## Best experience: use Claude.ai, not Claude Code
+## Best experience: use the Cowork tab in Claude desktop
 
-This skill works significantly better in **Claude.ai** (desktop or web) than in Claude Code. The reason is simple: Claude.ai renders SVG inline in the conversation, so you see the actual mark as you iterate. Claude Code outputs SVG as a code block — you have to copy it into a browser to see it.
+This skill works significantly better in the **Cowork tab in Claude desktop** than in Claude Code. The reason is simple: Claude desktop renders SVG inline in the conversation, so you see the actual mark as you iterate. Claude Code outputs SVG as a code block — you have to copy it into a browser to see it.
 
-Install via the Claude.ai method above, then open a new conversation and start from there.
+Install via the Claude desktop method above, then open a new conversation in the Cowork tab and start from there.
 
 ## Viewing your options — the specimen sheet
 
